@@ -66,6 +66,7 @@ var max =  getTopValue(keyLists);
 var temKeyList = keyLists; 
 var orderdList = []; 
 
+
 var count = 0; 
 while(orderdList.length <= 9){ 
 
