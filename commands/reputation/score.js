@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-
+const userData = require('../../data/userData.json'); 
 const Discord = require('discord.js')
 
 module.exports = class AppCommand extends Command {
@@ -18,71 +18,72 @@ module.exports = class AppCommand extends Command {
 
 
    
-        return message.say(":)\n"+ scoreboard(message, Discord));
+        return message.say(" ~ ~ )\n"+ scoreboard(message, Discord));
 	}
 
 };
 
 
 async function scoreboard(message, Discord) {
+  var returnData = "nothing here"; 
+
+
 try{
-
-    var localData; 
-    const fsPromises = require('fs').promises;
-    const data = await fsPromises.readFile('./data/thanksData.txt', 'utf-8').then(data =>
-         {
-          /*
-             //message.channel.send("Changing data... on ID : " + mention_id); 
-             console.log("The data from the pointSystem() function : ");
-             localData = JSON.parse(data);
-          console.log(localData);
-        */
-       console.log(data); 
-var disct = []
-disct = data.split("\n"); 
-console.log(disct); 
+  var keyLists = Object.keys(userData); 
+ 
+  getTop10(keyLists); 
 
 
 
-var array = [
-  {name: "John", age: 34},
-  {name: "Peter", age: 54},
-  {name: "Jake", age: 25}
-];
-
-//console.log(array);
-/*
-console.log(
-  array.sort(function(a, b) {
-    return   b.age -a.age;
-  })); 
-*/ 
-
-  var finallString = "Position | Points | UserTag\n"; 
-//console.log(Object(localData));
-
-const helpRepLeaderBoard = new Discord.MessageEmbed()
-    .setColor('#800080')
-    .setTitle('__Reputation Leaderboard__')
-    .setThumbnail('https://www.thespaghettidetective.com/img/logo_square.png')
-    .setFooter("This is the top 10 members")
-   // .addField('Scores: ', ("```" + finallString + "```"), true)
-
-    .addFields(
-        { name: 'Scores', value: ("```" + finallString + "```") },
-        { name: 'To see other score lists do: ', value: '-scores2 or -scores3 ' }
-    )
-    
-    .setTimestamp()
- //  message.channel.send({ embeds: [helpRepLeaderBoard] });
-    return { embeds: [helpRepLeaderBoard] }; 
-
-  }); 
-  } 
-catch (e){
-    console.error("Error in reading file for score board \n" + e.message); 
+}catch(error){
+console.error("An erro occured while setting up the leader baord:\n+ " + error); 
 }
+return returnData; 
 }
 
+//Get the user with the highest points
+function getTopValue(keyLists){
 
+   var max = 0
+   var maxCountUser; 
 
+for (let i = 0; i < keyLists.length; i++){ 
+var temp =  userData[keyLists[i]][0]; 
+
+if(temp > max){
+maxCountUser = userData[keyLists[i]][1]; 
+max = temp; 
+}
+}
+console.log("User witht the max poitns is : " + maxCountUser + " at a toatal of " + max)
+
+return max; 
+}
+//Highest points function done
+//Get the top 10 points of users
+function getTop10(keyLists){
+var max =  getTopValue(keyLists); 
+var temKeyList = keyLists; 
+var orderdList = {}; 
+
+while(i < 10){ 
+
+console.log(orderdList.length); 
+console.log("+--===-0-0=-0"); 
+
+for(var i = 0; i < temKey.length; i++){ 
+  
+  if(userData[keyLists[i]][0] == max){
+
+    console.log(keyLists);
+    orderdList.push(userData[keyLists[i]]); 
+    keyLists.splice(i,1);
+    console.log(keyLists);
+  }
+  console.log("."); 
+
+}
+
+}
+}
+//Get top 10 is done. 
