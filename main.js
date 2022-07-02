@@ -98,22 +98,3 @@ collector.on('end', collected => console.log(`Collected ${collected.size} items`
 }); 
 
     tsd.login(token);  
-
-
-
-
-
-
-
-	//Coumple of functions
-
-
-
-
-	/*
-client.on('clickButton', async (button) => {
-  if (button.id === 'click_to_function') {
-    button.channel.send(`${button.clicker.user.tag} clicked button!`);
-  }
-});
-	*/
