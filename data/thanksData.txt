@@ -1,5 +1,0 @@
-[
-  {name: "John", age: 34},
-  {name: "Peter", age: 54},
-  {name: "Jake", age: 25}
-];

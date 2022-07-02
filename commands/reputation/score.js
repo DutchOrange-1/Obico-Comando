@@ -36,7 +36,7 @@ try{
 
 
 }catch(error){
-console.error("An erro occured while setting up the leader baord:\n+ " + error); 
+console.error("An error occured while setting up the leader baord:\n+ " + error); 
 }
 return returnData; 
 }
@@ -64,26 +64,26 @@ return max;
 function getTop10(keyLists){
 var max =  getTopValue(keyLists); 
 var temKeyList = keyLists; 
-var orderdList = {}; 
+var orderdList = []; 
 
-while(i < 10){ 
+var count = 0; 
+while(orderdList.length <= 9){ 
 
-console.log(orderdList.length); 
-console.log("+--===-0-0=-0"); 
-
-for(var i = 0; i < temKey.length; i++){ 
+for(var i = 0; i < temKeyList.length; i++){ 
   
   if(userData[keyLists[i]][0] == max){
 
-    console.log(keyLists);
+    console.log(keyLists.length);
     orderdList.push(userData[keyLists[i]]); 
     keyLists.splice(i,1);
-    console.log(keyLists);
+    console.log(keyLists.length);
   }
-  console.log("."); 
-
 }
-
+//console.log(orderdList);
+count++;
+max--;  
+console.log("New MAX = " +  max + "\nOrder List length = " + orderdList.length);
 }
+console.log(orderdList);
 }
 //Get top 10 is done. 
