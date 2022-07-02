@@ -27,7 +27,7 @@ tsd.commands = new Discord.Collection();
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { clientId, guildId, token } = require('./config.json');
+const { clientId, guildId, token } = require('../config.json');
 
 
 const commands = [
@@ -97,12 +97,7 @@ collector.on('end', collected => console.log(`Collected ${collected.size} items`
 		
 }); 
 
-//Note that you need the Node module installed!
-
-	
-
-
-    tsd.login(' - - -'); //Remeber to add the token !! 
+    tsd.login(token);  
 
 
 
