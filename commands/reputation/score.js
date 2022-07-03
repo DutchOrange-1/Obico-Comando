@@ -3,7 +3,10 @@ const { MessageEmbed } = require('discord.js');
 const userData = require('../../data/userData.json'); 
 const Discord = require('discord.js')
 
+
+
 module.exports = class AppCommand extends Command {
+  
 	constructor(client) {
 		super(client, {
 			name: 'scoarboard',
@@ -13,33 +16,14 @@ module.exports = class AppCommand extends Command {
 			description: 'Reputation score system - Beta - ',
 		});
 	}
-	run(message) {
+  
+async run(message) {
+  const messageSending = Promise.resolve(getLocalFileData());
+  messageSending.then(value => message.say(value)); 
 
-
-
-   
-        return message.say(" ~ ~ )\n"+ scoreboard(message, Discord));
-	}
+    	}
 
 };
-
-
-async function scoreboard(message, Discord) {
-  var returnData = "nothing here"; 
-
-
-try{
-  var keyLists = Object.keys(userData); 
- 
-  getTop10(keyLists); 
-
-
-
-}catch(error){
-console.error("An error occured while setting up the leader baord:\n+ " + error); 
-}
-return returnData; 
-}
 
 //Get the user with the highest points
 function getTopValue(keyLists){
@@ -59,34 +43,52 @@ console.log("User witht the max poitns is : " + maxCountUser + " at a toatal of 
 
 return max; 
 }
-//Highest points function done
+//Highest points function done - rutuns an int of the max value
 //Get the top 10 points of users
 function getTop10(keyLists){
 var max =  getTopValue(keyLists); 
 var temKeyList = keyLists; 
 var orderdList = []; 
 
-
-var count = 0; 
-while(orderdList.length <= 6){ 
-console.log("Temp key list length : " + temKeyList.length)
+while(orderdList.length <= 9){  //One less than the requierd amount.  
+//console.log("Temp key list length : " + temKeyList.length)
 for(var i = 0; i < temKeyList.length; i++){ 
-  console.log("i = " + i ); 
   if(userData[keyLists[i]][0] == max){
 
     orderdList.push(userData[keyLists[i]]); 
-    console.log(max); 
+ //   console.log(max); 
  //   temKeyList.splice(i,1);
     temKeyList[i] = "000"; 
-    
-    console.log(temKeyList)
-
+  //  console.log(temKeyList)
   }
 }
-count++;
 max--;  
 //console.log("New MAX = " +  max + "  Order List length = " + orderdList.length);
 }
 console.log(orderdList);
+return (orderdList); 
 }
-//Get top 10 is done. 
+//Get top 10 is done. Returns a dictionary array of the top 10
+
+ function getLocalFileData(){
+  try{
+    var keyLists = Object.keys(userData); 
+    return getTop10(keyLists); 
+
+    }catch(error){
+    console.error("An error occured while setting up the leader baord:\n+ " + error); 
+    return "Error in getting data."; 
+    }
+    return "-"
+ }
+
+function resolveAfter10Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 10000);
+  });
+}
+
+
+
