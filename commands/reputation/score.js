@@ -68,22 +68,24 @@ var orderdList = [];
 
 
 var count = 0; 
-while(orderdList.length <= 9){ 
-
+while(orderdList.length <= 6){ 
+console.log("Temp key list length : " + temKeyList.length)
 for(var i = 0; i < temKeyList.length; i++){ 
-  
+  console.log("i = " + i ); 
   if(userData[keyLists[i]][0] == max){
 
-    console.log(keyLists.length);
     orderdList.push(userData[keyLists[i]]); 
-    keyLists.splice(i,1);
-    console.log(keyLists.length);
+    console.log(max); 
+ //   temKeyList.splice(i,1);
+    temKeyList[i] = "000"; 
+    
+    console.log(temKeyList)
+
   }
 }
-//console.log(orderdList);
 count++;
 max--;  
-console.log("New MAX = " +  max + "\nOrder List length = " + orderdList.length);
+//console.log("New MAX = " +  max + "  Order List length = " + orderdList.length);
 }
 console.log(orderdList);
 }
