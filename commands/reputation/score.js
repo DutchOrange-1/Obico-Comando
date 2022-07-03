@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const userData = require('../../data/userData.json'); 
 const Discord = require('discord.js')
-
+var topUserID = "123"; 
 
 
 module.exports = class AppCommand extends Command {
@@ -17,8 +17,8 @@ module.exports = class AppCommand extends Command {
 		});
 	}
   
-async run(message, Discord) {
-  SendEmbed(message, Discord); 
+async run(message, Discord, client) {
+  SendEmbed(message, Discord, client); 
 
     	}
 
@@ -35,10 +35,12 @@ var temp =  userData[keyLists[i]][0];
 
 if(temp > max){
 maxCountUser = userData[keyLists[i]][1]; 
+topUserID = keyLists[i] ;
 max = temp; 
 }
 }
 console.log("User witht the max poitns is : " + maxCountUser + " at a toatal of " + max)
+
 
 return max; 
 }
@@ -89,14 +91,38 @@ function resolveAfter10Seconds() {
   });
 }
 
-async function SendEmbed(message, Discord){
+async function SendEmbed(message, Discord, client){
 
   const messageSending = Promise.resolve(getLocalFileData());
-  messageSending.then(value => message.say(value));
+  messageSending.then(value => 
+    createEmbed(value, message, client)
+  ).then(embed => message.say(embed)); 
 
 
 }
 
-function createEmbed(Discord){
+async function createEmbed(value, message, client){
+  var finallString = "Position   Points     tUserTag\n"; 
+  var topUser = await message.client.users.fetch('822438562531377162'); 
+  console.log(topUser); 
+
+  for(var i = 1; i < value.length; i++){ 
+finallString += i + "\t|\t" + ((value[i])[0]) + "\t|\t" + ((value[i])[1]) + "\n"
+  }
+  console.log(finallString); 
   
+  const helpRepLeaderBoard = new Discord.MessageEmbed()
+  .setColor('#00FFFF')
+  .setTitle('TOP 10 Score board')
+  .setURL(' https://www.obico.io/docs/user-guides/optimal-camera-setup/  ')
+  .setThumbnail("")
+  .addFields(
+      { name: 'Scores', value: ("```" + finallString + "```") },
+ )
+  .setTimestamp()
+  .setFooter('Do -help for more info');
+
+
+     return helpRepLeaderBoard; 
+     
 }
