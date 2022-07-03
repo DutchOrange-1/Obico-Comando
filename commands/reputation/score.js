@@ -17,9 +17,8 @@ module.exports = class AppCommand extends Command {
 		});
 	}
   
-async run(message) {
-  const messageSending = Promise.resolve(getLocalFileData());
-  messageSending.then(value => message.say(value)); 
+async run(message, Discord) {
+  SendEmbed(message, Discord); 
 
     	}
 
@@ -65,7 +64,7 @@ for(var i = 0; i < temKeyList.length; i++){
 max--;  
 //console.log("New MAX = " +  max + "  Order List length = " + orderdList.length);
 }
-console.log(orderdList);
+//console.log(orderdList);
 return (orderdList); 
 }
 //Get top 10 is done. Returns a dictionary array of the top 10
@@ -90,5 +89,14 @@ function resolveAfter10Seconds() {
   });
 }
 
+async function SendEmbed(message, Discord){
+
+  const messageSending = Promise.resolve(getLocalFileData());
+  messageSending.then(value => message.say(value));
 
 
+}
+
+function createEmbed(Discord){
+  
+}
