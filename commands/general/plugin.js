@@ -14,7 +14,7 @@ module.exports = class AppCommand extends Command {
 	run(message) {
 
 		const webAPP = new MessageEmbed()
-        .setColor('#5D3FD3')
+        .setColor('#74EED1')
         .setTitle('Plugin Setup')
         //.setURL('https://www.obico.io/docs/user-guides/octoprint-plugin-setup/  ')
         .setThumbnail('https://yt3.ggpht.com/PPXa-3PVX73Gcd4t0wzR91G8TZ-pt7p9gyJIze2C7MYbaAa54rJqLztq44jPMmZyOTJmJmLJQA=s900-c-k-c0x00ffffff-no-rj')
