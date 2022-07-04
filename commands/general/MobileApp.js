@@ -5,7 +5,7 @@ module.exports = class AppCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'mobileapp',
-			aliases: ['mobileapp'],
+			aliases: ['mobileapp', 'mobile'],
 			group: 'general',
 			memberName: ' mobileapp',
 			description: 'Obico mobile app',
