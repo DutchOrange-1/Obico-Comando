@@ -26,7 +26,7 @@ module.exports = class AppCommand extends Command {
 
 
 		const webAPP = new MessageEmbed()
-        .setColor('#5D3FD3')
+        .setColor('#74EED1')
         .setTitle('Obico not watching')
         .setURL('https://www.obico.io/docs/user-guides/webcam-feed-is-not-showing ')
         .setThumbnail('https://yt3.ggpht.com/PPXa-3PVX73Gcd4t0wzR91G8TZ-pt7p9gyJIze2C7MYbaAa54rJqLztq44jPMmZyOTJmJmLJQA=s900-c-k-c0x00ffffff-no-rj')
