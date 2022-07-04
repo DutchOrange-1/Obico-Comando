@@ -12,9 +12,20 @@ module.exports = class AppCommand extends Command {
 		});
 	}
 	run(message) {
-        return message.say("Here is Obicos's GitHub: \n https://github.com/TheSpaghettiDetective  :obico:");
-	}
 
+			const gitHub = new MessageEmbed()
+			.setColor('#00FFFF')
+			.setTitle('Laggy camera')
+			.setURL('https://github.com/TheSpaghettiDetective ')
+			.setThumbnail('https://yt3.ggpht.com/PPXa-3PVX73Gcd4t0wzR91G8TZ-pt7p9gyJIze2C7MYbaAa54rJqLztq44jPMmZyOTJmJmLJQA=s900-c-k-c0x00ffffff-no-rj')
+			.addFields(
+				{ name: 'Obicos` GitHib ?  ', value: 'https://github.com/TheSpaghettiDetective ' },
+			)
+			.setTimestamp()
+			.setFooter('Do -help for more info');
+			
+			return message.say(gitHub);
+		}
 };
 
 
