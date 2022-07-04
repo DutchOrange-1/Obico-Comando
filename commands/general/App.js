@@ -8,17 +8,16 @@ module.exports = class AppCommand extends Command {
 			aliases: ['app'],
 			group: 'general',
 			memberName: 'app',
-			description: 'How to use TSD App',
+			description: 'How to use Obico App',
 		});
 	}
 	run(message) {
         const webAPP = new MessageEmbed()
-        .setColor('#5D3FD3')
-        .setTitle('How to set up TSD')
-        .setURL('https://www.obico.io/docs/user-guides/octoprint-plugin-setup/  ')
-        .setThumbnail('https://www.thespaghettidetective.com/img/logo_square.png')
+        .setColor('#74EED1')
+        .setTitle('How to set up Obico')
+	.setThumbnail('https://www.thespaghettidetective.com/img/logo_square.png')
         .addFields(
-            { name: 'How to set up TSD on octoprint using TSD servers by following: ', value: 'https://www.obico.io/docs/user-guides/octoprint-plugin-setup/' },
+            { name: 'How to setup Obico with cloud server: ', value: 'https://www.obico.io/docs/user-guides/octoprint-plugin-setup/' },
         )
         .setTimestamp()
         .setFooter('Do -help for more info');
