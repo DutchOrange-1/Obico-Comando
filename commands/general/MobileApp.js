@@ -17,7 +17,8 @@ module.exports = class AppCommand extends Command {
         .setTitle('Mobile App')
         .setThumbnail('https://yt3.ggpht.com/PPXa-3PVX73Gcd4t0wzR91G8TZ-pt7p9gyJIze2C7MYbaAa54rJqLztq44jPMmZyOTJmJmLJQA=s900-c-k-c0x00ffffff-no-rj')
         .addFields(
-            { name: 'Mobile App for iPhone: ', value: 'https://apps.apple.com/us/app/obico/id1540646623', '\nMobile App for Android: ', value: 'https://play.google.com/store/apps/details?id=com.thespaghettidetective.android&hl=en&gl=US/' 
+            { name: 'Mobile App for iPhone: ', value: 'https://apps.apple.com/us/app/obico/id1540646623',
+			 name:'\nMobile App for Android: ', value: 'https://play.google.com/store/apps/details?id=com.thespaghettidetective.android&hl=en&gl=US/' 
 	   },
         )
         .setTimestamp()
