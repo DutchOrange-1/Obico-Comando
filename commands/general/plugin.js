@@ -5,7 +5,7 @@ module.exports = class AppCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'plugin_setup',
-			aliases: ['plugin'],
+			aliases: ['plugin', 'octoprint', 'moonraker'],
 			group: 'general',
 			memberName: 'plugin_setup',
 			description: 'Obico plugins for Octoprint and Moonraker',
