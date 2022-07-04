@@ -13,7 +13,9 @@ module.exports = async msg => {
     });
 
 
+       var date= new Date(); 
 
+console.log("Message from " + msg.author.tag + "  :  " + date.toLocaleTimeString() + "  :  " + date.toLocaleDateString()); 
 const str = msg.content.toLowerCase();
 var d = new Date();
 
@@ -27,7 +29,7 @@ var words = ["thanks", "thanks!", "thanks,", "thanks."
 ];
 
 var posotiveDetection = 0; 
-console.log(wordArray.length);
+//console.log(wordArray.length);
 for(var j = 0; j < (wordArray.length); j++){
 
 for(var i = 0; i < 20; i++){
