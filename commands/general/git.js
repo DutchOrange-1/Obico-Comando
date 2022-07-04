@@ -22,7 +22,9 @@ module.exports = class AppCommand extends Command {
         .setTimestamp()
         .setFooter('Do -help for more info');
         //return message.say("Here is Obicos's GitHub: \n https://github.com/TheSpaghettiDetective  :obico:");
+		return message.say(webAPP); 
 	}
+	
 
 };
 
