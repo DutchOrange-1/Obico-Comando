@@ -34,7 +34,7 @@ module.exports = class XkcdCommand extends commando.Command {
 		}).then((a) => {
 			if (!a.image) return msg.say('Couldn\'t find that ID.');
 			const embed = new MessageEmbed()
-				.setColor('#5D3FD3')
+				.setColor('#74EED1')
 				.setTitle(a.title)
 				.setDescription(a.description)
 				.setImage(a.image)
