@@ -1,9 +1,12 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-
+const userData = require('../../data/userData.json'); 
 const Discord = require('discord.js')
+var topUserID = "123"; 
+
 
 module.exports = class AppCommand extends Command {
+  
 	constructor(client) {
 		super(client, {
 			name: 'scoarboard',
@@ -13,76 +16,112 @@ module.exports = class AppCommand extends Command {
 			description: 'Reputation score system - Beta - ',
 		});
 	}
-	run(message) {
-
-
-
-   
-        return message.say(":)\n"+ scoreboard(message, Discord));
-	}
-
+  
+async run(message, Discord, client) {
+ SendEmbed(message, Discord, client); 
+}
 };
 
+//Get the user with the highest points
+function getTopValue(keyLists){
 
-async function scoreboard(message, Discord) {
-try{
+   var max = 0
+   var maxCountUser; 
 
-    var localData; 
-    const fsPromises = require('fs').promises;
-    const data = await fsPromises.readFile('./data/thanksData.txt', 'utf-8').then(data =>
-         {
-          /*
-             //message.channel.send("Changing data... on ID : " + mention_id); 
-             console.log("The data from the pointSystem() function : ");
-             localData = JSON.parse(data);
-          console.log(localData);
-        */
-       console.log(data); 
-var disct = []
-disct = data.split("\n"); 
-console.log(disct); 
+for (let i = 0; i < keyLists.length; i++){ 
+var temp =  userData[keyLists[i]][0]; 
+
+if(temp > max){
+maxCountUser = userData[keyLists[i]][1]; 
+topUserID = keyLists[i] ;
+max = temp; 
+}
+}
+console.log("User witht the max poitns is : " + maxCountUser + " at a toatal of " + max)
 
 
+return max; 
+}
+//Highest points function done - rutuns an int of the max value
+//Get the top 10 points of users
+function getTop10(keyLists){
+var max =  getTopValue(keyLists); 
+var temKeyList = keyLists; 
+var orderdList = []; 
 
-var array = [
-  {name: "John", age: 34},
-  {name: "Peter", age: 54},
-  {name: "Jake", age: 25}
-];
+while(orderdList.length <= 9){  //One less than the requierd amount.  
+//console.log("Temp key list length : " + temKeyList.length)
+for(var i = 0; i < temKeyList.length; i++){ 
+  if(userData[keyLists[i]][0] == max){
 
-//console.log(array);
-/*
-console.log(
-  array.sort(function(a, b) {
-    return   b.age -a.age;
-  })); 
-*/ 
+    orderdList.push(userData[keyLists[i]]); 
+ //   console.log(max); 
+ //   temKeyList.splice(i,1);
+    temKeyList[i] = "000"; 
+  //  console.log(temKeyList)
+  }
+}
+max--;  
+//console.log("New MAX = " +  max + "  Order List length = " + orderdList.length);
+}
+//console.log(orderdList);
+return (orderdList); 
+}
+//Get top 10 is done. Returns a dictionary array of the top 10
 
-  var finallString = "Position | Points | UserTag\n"; 
-//console.log(Object(localData));
+ function getLocalFileData(){
+  try{
+    var keyLists = Object.keys(userData); 
+    return getTop10(keyLists); 
 
-const helpRepLeaderBoard = new Discord.MessageEmbed()
-    .setColor('#800080')
-    .setTitle('__Reputation Leaderboard__')
-    .setThumbnail('https://www.thespaghettidetective.com/img/logo_square.png')
-    .setFooter("This is the top 10 members")
-   // .addField('Scores: ', ("```" + finallString + "```"), true)
+    }catch(error){
+    console.error("An error occured while setting up the leader baord:\n+ " + error); 
+    return "Error in getting data."; 
+    }
+    return "-"
+ }
 
-    .addFields(
-        { name: 'Scores', value: ("```" + finallString + "```") },
-        { name: 'To see other score lists do: ', value: '-scores2 or -scores3 ' }
+async function SendEmbed(message, Discord, client){
+
+  const messageSending = Promise.resolve(getLocalFileData());
+  messageSending.then(value => 
+    createEmbed(value, message, client)
+  ).catch(console.error); 
+
+}
+async function createEmbed(value, message, client){
+  var finallString = "Pos.\tPoints\tUserTag\n"; 
+  var topUserURL = "https://cdn.discordapp.com/attachments/822454675256508427/993162124438290452/unknown.png"
+
+  message.client.user.fetch(topUserID)
+  .then(user => {
+    user.avatarURL() 
+
+  }).then(topUserURL => {
+      console.log(topUserURL);
+
+    for(var i = 1; i < value.length; i++){ 
+      finallString += i + ".\t  " + ((value[i])[0]) + "\t\t" + ((value[i])[1]) + "\n"
+        }
+        console.log(finallString); 
+        
+        
+        const helpRepLeaderBoard = new Discord.MessageEmbed()
+        .setColor('#00FFFF')
+        .setTitle('TOP 10 Score board')
+        .setURL(' https://www.obico.io/docs/user-guides/optimal-camera-setup/  ')
+        .setThumbnail(topUserURL)
+        .addFields(
+            { name: 'Scores', value: ("```" + finallString + "```") },
+       )
+        .setTimestamp()
+        .setFooter('Do -help for more info');
+      
+      
+         message.say(helpRepLeaderBoard); 
+       
+        }
     )
-    
-    .setTimestamp()
- //  message.channel.send({ embeds: [helpRepLeaderBoard] });
-    return { embeds: [helpRepLeaderBoard] }; 
-
-  }); 
-  } 
-catch (e){
-    console.error("Error in reading file for score board \n" + e.message); 
+  .catch(console.error);
+  
 }
-}
-
-
-
