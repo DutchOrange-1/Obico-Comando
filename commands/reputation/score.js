@@ -107,7 +107,7 @@ async function createEmbed(value, message, client){
         
         
         const helpRepLeaderBoard = new Discord.MessageEmbed()
-        .setColor('#00FFFF')
+        .setColor('#74EED1')
         .setTitle('TOP 10 Score board')
         .setURL(' https://www.obico.io/docs/user-guides/optimal-camera-setup/  ')
         .setThumbnail(topUserURL)
