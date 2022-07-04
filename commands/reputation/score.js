@@ -18,10 +18,8 @@ module.exports = class AppCommand extends Command {
 	}
   
 async run(message, Discord, client) {
-  SendEmbed(message, Discord, client); 
-
-    	}
-
+ SendEmbed(message, Discord, client); 
+}
 };
 
 //Get the user with the highest points
@@ -83,46 +81,47 @@ return (orderdList);
     return "-"
  }
 
-function resolveAfter10Seconds() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve('resolved');
-    }, 10000);
-  });
-}
-
 async function SendEmbed(message, Discord, client){
 
   const messageSending = Promise.resolve(getLocalFileData());
   messageSending.then(value => 
     createEmbed(value, message, client)
-  ).then(embed => message.say(embed)); 
-
+  ).catch(console.error); 
 
 }
-
 async function createEmbed(value, message, client){
-  var finallString = "Position   Points     tUserTag\n"; 
-  var topUser = await message.client.users.fetch('822438562531377162'); 
-  console.log(topUser); 
+  var finallString = "Pos.\tPoints\tUserTag\n"; 
+  var topUserURL = "https://cdn.discordapp.com/attachments/822454675256508427/993162124438290452/unknown.png"
 
-  for(var i = 1; i < value.length; i++){ 
-finallString += i + "\t|\t" + ((value[i])[0]) + "\t|\t" + ((value[i])[1]) + "\n"
-  }
-  console.log(finallString); 
+  message.client.user.fetch(topUserID)
+  .then(user => {
+    user.avatarURL() 
+
+  }).then(topUserURL => {
+      console.log(topUserURL);
+
+    for(var i = 1; i < value.length; i++){ 
+      finallString += i + ".\t  " + ((value[i])[0]) + "\t\t" + ((value[i])[1]) + "\n"
+        }
+        console.log(finallString); 
+        
+        
+        const helpRepLeaderBoard = new Discord.MessageEmbed()
+        .setColor('#00FFFF')
+        .setTitle('TOP 10 Score board')
+        .setURL(' https://www.obico.io/docs/user-guides/optimal-camera-setup/  ')
+        .setThumbnail(topUserURL)
+        .addFields(
+            { name: 'Scores', value: ("```" + finallString + "```") },
+       )
+        .setTimestamp()
+        .setFooter('Do -help for more info');
+      
+      
+         message.say(helpRepLeaderBoard); 
+       
+        }
+    )
+  .catch(console.error);
   
-  const helpRepLeaderBoard = new Discord.MessageEmbed()
-  .setColor('#00FFFF')
-  .setTitle('TOP 10 Score board')
-  .setURL(' https://www.obico.io/docs/user-guides/optimal-camera-setup/  ')
-  .setThumbnail("")
-  .addFields(
-      { name: 'Scores', value: ("```" + finallString + "```") },
- )
-  .setTimestamp()
-  .setFooter('Do -help for more info');
-
-
-     return helpRepLeaderBoard; 
-     
 }
