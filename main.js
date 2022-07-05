@@ -1,4 +1,4 @@
-
+c
 const thanksDetection = require('./events/thanksDetection.js');
 const ball8_auto = require('./events/8ball_auto.js'); 
 const spamdetect = require('./events/spamdetect.js'); 
