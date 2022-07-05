@@ -11,36 +11,34 @@ module.exports = class AppCommand extends Command {
 			name: 'reputation',
 			aliases: ['rep', 'r'],
 			group: 'reputation',
-			memberName: 'ownReputation',
+			memberName: 'own_reputation',
 			description: 'Get own reputation score ',
 		});
 	}
   
-async run(message, Discord, client) {
- var userID = message.author.ID; 
+async run(message, client) {
+ var userID = message.author.id; 
 console.log(userID);
 
 
-message.author.user.avatarURL()
-  .then(user => {
-    user.avatarURL() 
+var userAvatarURL = message.author.avatarURL(); 
+console.log(userAvatarURL);
 
-  }).then(topUserURL => {
-      console.log(topUserURL); 
-}); 
+var userScore =  (userData[userID])[0]
+  console.log(userScore);
 
-const helpRepLeaderBoard = new Discord.MessageEmbed()
-        .setColor('#74EED1')
-        .setTitle('Yor Reputation')
-        .setThumbnail(topUserURL)
-        .addFields(
-            { name: 'Reputation: ', value: "~" },
-       )
-        .setTimestamp()
-        .setFooter('Do -help for more info');
-      
-      
-         message.say(helpRepLeaderBoard); 
+  const helpRepLeaderBoard = new Discord.MessageEmbed()
+  .setColor('#74EED1')
+  .setTitle('__Yor Reputation__')
+  .setThumbnail(userAvatarURL)
+  .addFields(
+      { name: 'Reputation: ', value: ("**"+ userScore + "**")},
+ )
+  .setTimestamp()
+  .setFooter('Do -help for more info');
+
+
+   message.say(helpRepLeaderBoard); 
+
 }
 }
-
