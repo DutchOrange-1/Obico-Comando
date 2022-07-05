@@ -17,7 +17,7 @@ const tsd = new CommandoClient({
 });
 
 
-const fs = require('node:fs');
+const fs = require('fs');
 tsd.commands = new Discord.Collection();
 
 
