@@ -42,7 +42,10 @@ const helpRepLeaderBoard = new Discord.MessageEmbed()
       
          message.say(helpRepLeaderBoard); 
   
+<<<<<<< Updated upstream
          
+=======
+>>>>>>> Stashed changes
 
 }
 }
