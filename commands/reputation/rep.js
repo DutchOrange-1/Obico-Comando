@@ -29,7 +29,7 @@ var userScore =  (userData[userID])[0]
 
   const helpRepLeaderBoard = new Discord.MessageEmbed()
   .setColor('#74EED1')
-  .setTitle('__Yor Reputation__')
+  .setTitle('__Your Reputation__')
   .setThumbnail(userAvatarURL)
   .addFields(
       { name: 'Reputation: ', value: ("**"+ userScore + "**")},
