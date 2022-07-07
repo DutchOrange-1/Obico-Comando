@@ -27,7 +27,7 @@ var words = ["thanks", "thanks!", "thanks,", "thanks."
 ];
 
 var posotiveDetection = 0; 
-console.log(wordArray.length);
+//console.log(wordArray.length); //THis damm thing makes so much spam
 for(var j = 0; j < (wordArray.length); j++){
 
 for(var i = 0; i < 20; i++){
