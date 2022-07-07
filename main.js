@@ -1,4 +1,3 @@
-
 const thanksDetection = require('./events/thanksDetection.js');
 const ball8_auto = require('./events/8ball_auto.js'); 
 const spamdetect = require('./events/spamdetect.js'); 
@@ -18,7 +17,7 @@ const tsd = new CommandoClient({
 });
 
 
-const fs = require('node:fs');
+const fs = require('fs');
 tsd.commands = new Discord.Collection();
 
 

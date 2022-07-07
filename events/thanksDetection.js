@@ -13,7 +13,12 @@ module.exports = async msg => {
     });
 
 
+
 console.log("Message from " + msg.author.tag); 
+
+       var date= new Date(); 
+
+console.log("Message from " + msg.author.tag + "  :  " + date.toLocaleTimeString() + "  :  " + date.toLocaleDateString()); 
 const str = msg.content.toLowerCase();
 var d = new Date();
 
@@ -27,7 +32,6 @@ var words = ["thanks", "thanks!", "thanks,", "thanks."
 ];
 
 var posotiveDetection = 0; 
-//console.log(wordArray.length); //THis damm thing makes so much spam
 for(var j = 0; j < (wordArray.length); j++){
 
 for(var i = 0; i < 20; i++){

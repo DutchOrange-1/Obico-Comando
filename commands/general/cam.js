@@ -13,7 +13,7 @@ module.exports = class AppCommand extends Command {
 	}
 	run(message) {
         const webAPP = new MessageEmbed()
-        .setColor('#5D3FD3')
+        .setColor('#74EED1')
         .setTitle('Camera Setup')
         .setURL(' https://www.obico.io/docs/user-guides/optimal-camera-setup/  ')
         .setThumbnail(' https://www.thespaghettidetective.com/img/camerasetups/cam19.jpg')
