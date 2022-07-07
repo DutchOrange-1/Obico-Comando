@@ -13,7 +13,7 @@ module.exports = async msg => {
     });
 
 
-
+console.log("Message from " + msg.author.tag); 
 const str = msg.content.toLowerCase();
 var d = new Date();
 
