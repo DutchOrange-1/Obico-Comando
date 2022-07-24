@@ -10,7 +10,7 @@ module.exports = class AppCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name: 'scoarboard',
-			aliases: ['score', 'score1'],
+			aliases: ['score', 'score1', 's'],
 			group: 'reputation',
 			memberName: 'scoring',
 			description: 'Reputation score system - Beta - ',
@@ -48,10 +48,11 @@ function getTop10(keyLists){
 var max =  getTopValue(keyLists); 
 var temKeyList = keyLists; 
 var orderdList = []; 
-
-while(orderdList.length <= 9){  //One less than the requierd amount.  
+ 
+while(orderdList.length <= 10){  //One less than the requierd amount.  
 //console.log("Temp key list length : " + temKeyList.length)
-for(var i = 0; i < temKeyList.length; i++){ 
+for(var i = 0; i <= temKeyList.length; i++){ 
+  console.log("Next user Data = " + (temKeyList[i])[0] + " user " + (temKeyList[i])[1]);
   if(userData[keyLists[i]][0] == max){
 
     orderdList.push(userData[keyLists[i]]); 
@@ -62,9 +63,9 @@ for(var i = 0; i < temKeyList.length; i++){
   }
 }
 max--;  
-//console.log("New MAX = " +  max + "  Order List length = " + orderdList.length);
+console.log("New MAX = " +  max + "  Order List length = " + orderdList.length);
 }
-//console.log(orderdList);
+console.log(orderdList);
 return (orderdList); 
 }
 //Get top 10 is done. Returns a dictionary array of the top 10
@@ -100,7 +101,10 @@ async function createEmbed(value, message, client){
   }).then(topUserURL => {
       console.log(topUserURL);
 
-    for(var i = 1; i < value.length; i++){ 
+      // value.length
+     
+    for(var i = 1; i < 11; i++){ 
+      
       finallString += i + ".\t  " + ((value[i])[0]) + "\t\t" + ((value[i])[1]) + "\n"
         }
         console.log(finallString); 
