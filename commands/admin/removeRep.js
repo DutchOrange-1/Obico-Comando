@@ -61,14 +61,14 @@ module.exports = class AppCommand extends Command {
                      message.delete(); 
                      try{
                       const replyEmbed = new MessageEmbed()
-                      .setColor('#5D3FD3')
+                      .setColor('#74EED1')
                       .setTitle('Rep removed from __' + tagedUser_username + "__")
-                      .setThumbnail('https://www.thespaghettidetective.com/img/logo_square.png')
+                      .setThumbnail('https://yt3.ggpht.com/PPXa-3PVX73Gcd4t0wzR91G8TZ-pt7p9gyJIze2C7MYbaAa54rJqLztq44jPMmZyOTJmJmLJQA=s176-c-k-c0x00ffffff-no-rj')
                       .addFields(
-                        { name: 'Rep removed by: ' + message.author.username + ' ' , value: 'rep is now = ' + (oldPoints-1) }
+                        { name: 'Rep removed by: ' + message.author.username + ' ' , value: 'Rep is now ' + (oldPoints-1) }
                       ) 
                       .setTimestamp()
-                      .setFooter('see your score with -rep');
+                      .setFooter('See your score with -rep');
             
                       message.say(replyEmbed);
                     }catch(err){
@@ -91,16 +91,16 @@ module.exports = class AppCommand extends Command {
                       
 try{
                       const anEmbed = new MessageEmbed()
-                      .setColor('#5D3FD3')
+                      .setColor('#74EED1')
                       .setTitle('Removed rep from __' + tagedUser_username + "__")
-                      .setThumbnail('https://www.thespaghettidetective.com/img/logo_square.png')
+                      .setThumbnail('https://yt3.ggpht.com/PPXa-3PVX73Gcd4t0wzR91G8TZ-pt7p9gyJIze2C7MYbaAa54rJqLztq44jPMmZyOTJmJmLJQA=s176-c-k-c0x00ffffff-no-rj')
                       .addFields(
                           { name: 'User ID rep was removed from: ' , value: mention_id },
                           { name: 'Removed by : ' , value: message.author.tag  },
                           { name: 'Removed by ID: ', value: message.author.id  },
                           { name: 'Removed In channel tag: ' , value: message.channel.name },
                           { name: 'Removed In channel ID: ' , value: message.channel.id },
-                          { name: 'New Help rep:  ' , value: ':' + (oldPoints-1) },
+                          { name: 'New Help rep: ' , value: ':' + (oldPoints-1) },
                      )
                       .setTimestamp()
 
