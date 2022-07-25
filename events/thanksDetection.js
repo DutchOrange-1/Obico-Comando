@@ -73,9 +73,9 @@ console.log(`User ${msg.author.tag} Thanked: ${tagedUser_username}`)
 
 }else if(posotiveDetection == 1 && thanksChecker == false ){ //Reply if no one was mentioned
 
-msg.reply("If you were trying to thank someone,\nPlease say \"thank you @user_you_want_to_thank\"  " + 
-" so that we can properly credit them. \nHere is some more " + 
-" info : <https://www.thespaghettidetective.com/blog/2021/03/24/get-involved-and-get-detective-hours/>").then(sent => { // 'sent' is that msg you just sent
+msg.reply("If you were trying to thank someone, please say \"thank you @user_you_want_to_thank\" " + 
+"so that we can properly credit them. \nHere is some more " + 
+"info: <https://www.obico.io/blog/2021/03/24/get-involved-and-get-detective-hours/>").then(sent => { // 'sent' is that msg you just sent
 
 let id = sent.id;
 thanksmessageID = id; 
