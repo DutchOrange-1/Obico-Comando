@@ -10,12 +10,14 @@ const Discord = require('discord.js')
 const { MessageActionRow, MessageSelectMenu,  MessageButton } = require('discord.js');
 const { Collection, Client, MessageEmbed, Intents } = require('discord.js'); 
 
+const { clientId, guildId, prefix, token } = require('../config.json');
+
 const tsd = new CommandoClient({
-	commandPrefix: '+',
+	commandPrefix: prefix,
 	owner: ['822438562531377162', '621117690622378024'],	//DutchOrange and Ryan
 	invite: 'https://discord.com/invite/hsMwGpD'
 });
-
+console.log("Prefix is = " + prefix)
 
 const fs = require('fs');
 tsd.commands = new Discord.Collection();
@@ -26,7 +28,7 @@ tsd.commands = new Discord.Collection();
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { clientId, guildId, token } = require('../config.json');
+
 
 
 const commands = [

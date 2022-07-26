@@ -56,24 +56,18 @@ var localData;
 
 		}).catch((err) => console.error('Failed to read file\n', err));
 
-		console.log("Compleated"); 
-	
-	
-		//message.say("Current Django fails = " + localData);
 		
-		run(message) {
-
 			const comp = new MessageEmbed()
 		.setColor('#74EED1')
-		.setTitle('Django Failure!')
+		.setTitle('Django Failure! +1')
 		.setThumbnail('https://yt3.ggpht.com/PPXa-3PVX73Gcd4t0wzR91G8TZ-pt7p9gyJIze2C7MYbaAa54rJqLztq44jPMmZyOTJmJmLJQA=s900-c-k-c0x00ffffff-no-rj')
 		.addFields(
-		    { name: ('Oh, no, another Django Fail! The New Number of Django Fails is **' + localData + '**\n\n'), 
-		      name: 'Follow this section of the guide to ensure Django is configured properly: ', value: 'https://github.com/TheSpaghettiDetective/obico-server#configure-django-site' },
+		    { name: 'Oh, no, another Django Fail! The New Number of Django Fails is: ', value: "**" + localData + "**"},  
+		    { name: 'Follow this section of the guide to ensure Django is configured properly: ', value: 'https://github.com/TheSpaghettiDetective/obico-server#configure-django-site'} 
+			 
 		)
 		.setTimestamp()
 		.setFooter('Do -help for more info');
-			return message.say(comp); 
-		}
-		return localData; 
+			message.say(comp); 
+		    //return localData; 
 }
