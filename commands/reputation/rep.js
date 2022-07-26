@@ -27,6 +27,11 @@ console.log(userAvatarURL);
 var userScore =  (userData[userID])[0]
   console.log(userScore);
 
+  if(userScore == NaN || userScore < 0 || userScore == null){
+    console.log("Score not a number!"); 
+    userScore = 0;  
+  }
+
   const helpRepLeaderBoard = new Discord.MessageEmbed()
   .setColor('#74EED1')
   .setTitle('__Your Reputation__')
