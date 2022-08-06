@@ -17,7 +17,8 @@ module.exports = class AppCommand extends Command {
 			group: 'admin',
 			memberName: 'setrep',
 			description: 'Set a reputation value for a user',
-            clientPermissions: ['ADMINISTRATOR', 'BAN_MEMBERS']
+            userPermissions: ['ADMINISTRATOR', 'BAN_MEMBERS'],
+        
 		});
 	}
 	run(message) {
