@@ -17,7 +17,7 @@ module.exports = class AppCommand extends Command {
 			group: 'admin',
 			memberName: 'takerep',
 			description: 'removes one rep from a user',
-            clientPermissions: ['ADMINISTRATOR', 'BAN_MEMBERS']
+            userPermissions: ['ADMINISTRATOR', 'BAN_MEMBERS'],
 		});
 	}
 	run(message) {
