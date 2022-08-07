@@ -22,16 +22,28 @@ module.exports = class AppCommand extends Command {
 		});
 	}
 	run(message) {
-
-        if(message.member.roles.cache.find(r => r.name === "Team Members")) {
-            try{
+        console.log("Rinning the take rep: \n \n .. .. .."); 
+                  try{
               
               taggedUser_id =   message.mentions.members.first().user.id; 
               tagedUser_username =   message.mentions.members.first().user.username;
               
         var allContent = message.content.split(" "); 
-        var amount = allContent[allContent.length-1]; 
-            }catch(e){console.log(e)}};
+        var amount;  
+        try{
+
+            for(var i=2; i<allContent.length; i++){
+                if(allContent[i] != null){
+                    amount = allContent[i]; 
+                    console.log("Amount value is now = " + amount);
+                    break; 
+                }
+            }
+
+        }catch(err){console.log("Error in getting the point value")}
+        
+                
+            }catch(e){console.log(e)};
 
         var tagedUser_username, tagedUser_usernameTAG, mention_id, taggedUser_id; 
         try{
