@@ -60,7 +60,7 @@ tsd.registry
 	.registerGroups([
 		['general', 'General commands'],
 		['fun', 'Some fun commands'],
-		['reputation', 'Reputation system commands'],
+	//	['reputation', 'Reputation system commands'],
         ['admin', 'Administrator'],
 	])
 	.registerDefaultGroups()
@@ -74,7 +74,7 @@ tsd.registry
     });
     tsd.on('error', console.error);
 
-	tsd.on('message', thanksDetection);
+	//tsd.on('message', thanksDetection);
 	tsd.on('message', ball8_auto);
 	tsd.on('message', spamdetect);
 	tsd.on('message', sql);
