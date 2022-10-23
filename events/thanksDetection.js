@@ -1,6 +1,8 @@
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
 const Discord = require('discord.js')
+const fs = require('fs');
+
 
 
 module.exports = async msg => {
@@ -122,11 +124,16 @@ var localData, oldPoints = 0;
            localData[mention_id][0] = oldPoints + 1; 
        
          //  client.channels.cache.get('890884923555205150').send("Gave +1 Help Reputation to @" + tagedUser_username);
-         if(localData[mention_id][0] % 5 == 0){
-        sendMessage(client, localData, mention_id, '822438562531377162'); 
-        sendMessage(client, localData, mention_id, '621117690622378024'); 
-        sendMessage(client, localData, mention_id, '558419224402460673'); 
+         try{
+          if(localData[mention_id][0] % 5 == 0){
+            sendMessage(client, localData, mention_id, '822438562531377162'); 
+            sendMessage(client, localData, mention_id, '621117690622378024'); 
+            sendMessage(client, localData, mention_id, '558419224402460673'); 
+             }
+         }catch(err){
+          console.log(err); 
          }
+         
 
            //Now writing data to file:
            
@@ -141,6 +148,8 @@ var localData, oldPoints = 0;
                       console.error('Error occured when writing userData.json');
                   }
               }
+       
+
             );
 
 
